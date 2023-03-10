@@ -1,18 +1,12 @@
-/*
-const addContact = (event) => {
-    event.preventDefault()
-    const personObject = {
-        content: newName,
-        id: contacts.length + 1
-    }
-    setContacts(contacts.concat(personObject))
-    setNewContact('')
 
-}
-*/
+
 const Phonebook = ({person}) => {
     return (
-        <li>{person.content}</li>
+        <div>
+        <li>{person.name} {person.number}</li>
+        </div>
+
     )
 }
-export default Phonebook 
+
+export default Phonebook
