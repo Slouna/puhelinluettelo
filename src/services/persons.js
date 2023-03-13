@@ -12,9 +12,18 @@ const getAll = () => {
   const update = (id, newObject) => {
     return axios.put(`${baseUrl}/${id}`, newObject)
   }
+
+  const deletePerson = (person) => {
+    console.log(`tääl ${person}`)
+      axios.delete(`${baseUrl}/${person.id}`)
+      console.log("----------------")
+      return axios.get(baseUrl)
+      
+  }
   
   export default { 
     getAll: getAll, 
     create: create, 
-    update: update 
+    update: update,
+    deletePerson: deletePerson
   }
