@@ -1,9 +1,10 @@
-.added {
-    padding: 15px;
-    border: rgb(0, 23, 128);
+.notification {
+    color: green;
+    background: lightgrey;
+    font-size: 20px;
     border-style: solid;
-    border-width: 2px;
-    border-radius: 10px;
-    align-items: center;
-    background-color: rgb(131, 180, 243);
-}
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  

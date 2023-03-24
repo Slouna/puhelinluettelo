@@ -1,29 +1,28 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/persons'
+const baseUrl = 'http://localhost:3001/api/persons'
 
 const getAll = () => {
-    return axios.get(baseUrl)
-  }
-  
-  const create = newObject => {
-    return axios.post(baseUrl, newObject)
-  }
-  
-  const update = (id, newObject) => {
-    return axios.put(`${baseUrl}/${id}`, newObject)
-  }
+  return axios.get(baseUrl).then(response => response.data)
+}
 
-  const deletePerson = (person) => {
-    console.log(`tääl ${person}`)
-      axios.delete(`${baseUrl}/${person.id}`)
-      console.log("----------------")
-      return axios.get(baseUrl)
-      
-  }
-  
-  export default { 
-    getAll: getAll, 
-    create: create, 
-    update: update,
-    deletePerson: deletePerson
-  }
+const create = newPerson => {
+  return axios.post(baseUrl, newPerson).then(response => response.data)
+}
+
+// Ex. 2.14
+const remove = (id) => {
+    return axios.delete(`${baseUrl}/${id}`).then(response => response.data)
+}
+
+// Ex. 2.15
+const update = (id, newPerson) => {
+    return axios.put(`${baseUrl}/${id}`, newPerson).then(response => response.data)
+}
+
+// eslint-disable-next-line
+export default { 
+  getAll, 
+  create,
+  remove,
+  update
+}

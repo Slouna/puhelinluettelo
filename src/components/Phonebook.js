@@ -2,14 +2,14 @@ import axios from "axios"
 import { useEffect } from "react"
 import personService from '../services/persons'
 
-const DelButton = (id) => {
+const DelButton = ({person}) => {
     /// update pitää hoitaa vielä poiston jälkeen
    const confirmationCheck = () => {
-       console.log(id)
-    if (window.confirm(`Delete ${id.id}`)) {
-        personService.deletePerson(id)
+       console.log(person)
+    if (window.confirm(`Delete ${person.name}`)) {
+        personService.deletePerson(person)
         .then(response => personService.getAll())
-        .then(response => console.log("Deleted"))
+        .then(console.log("deleted"))
         
     }}
     return(
@@ -20,13 +20,14 @@ const DelButton = (id) => {
 
 
 
-const Phonebook = ({person}) => {
+const Phonebook = ({persons, onDeletePerson}) => {
     return (
-        <div>
-        <li>{person.name} {person.number} {<DelButton id= {person.name}/>}</li>
-        
-        </div>
-
+        persons.map(person => <Person key={person.id} person={person} onDeletePerson={onDeletePerson} />)
+      )
+    }
+const Person = ({ person, onDeletePerson }) => {
+    return (
+      <li>{person.name} {person.number} <button onClick={() => onDeletePerson(person)}>delete</button></li>
     )
-}
+  }
 export default Phonebook
