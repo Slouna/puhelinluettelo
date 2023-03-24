@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import personService from './services/persons'
 import './index.css'
-
+//koodi lainattu mallivastauksesta
 const FilterForm = ({ searchTerm, setSearchTerm }) => {
   return (
     <form>
